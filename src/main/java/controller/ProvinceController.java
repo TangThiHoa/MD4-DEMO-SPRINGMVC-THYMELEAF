@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import service.IProvinceService;
 
 @Controller
@@ -47,5 +48,16 @@ public class ProvinceController {
         ModelAndView modelAndView = new ModelAndView("redirect:/provinces");
         provinceService.save(province);
         return modelAndView;
+    }
+    @GetMapping("/provices/delete/{id}")
+    public ModelAndView showFormDelete(@PathVariable Long id, Province province){
+        ModelAndView modelAndView = new ModelAndView("/province/delete");
+        modelAndView.addObject("province",provinceService.findById(id).get());
+        return modelAndView;
+    }
+    @PostMapping("/provinces/delete/{edi}")
+    public String delete(Province province){
+       provinceService.remove(province.getId());
+        return "redirect:/product";
     }
 }

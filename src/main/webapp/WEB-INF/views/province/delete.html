@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/provinces/delete/" method="post">
+    <input type="hidden" th:value="${province.id}">
+    <input type="text" name="name" th:value="${province.name}">
+    <input type="text" name="description" th:value="${province.description}">
+    <button>Xóa</button>
+</form>
+</body>
+</html>
